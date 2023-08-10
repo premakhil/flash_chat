@@ -39,27 +39,99 @@ class _loginScreenState extends State<loginScreen> {
           color: Color(0xff6750A4),
         ),
       ),
-      body: Center(
-        child: TextField(
-          onChanged: (value) {
-            //Do something with the user input.
-          },
-          decoration: InputDecoration(
-            hintText: 'Enter your email',
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(32.0)),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextField(
+              onChanged: (value) {},
+              decoration: InputDecoration(
+                hintText: 'E-mail',
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffE8DEF8), width: 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffE8DEF8), width: 2.5),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+              ),
             ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.lightBlueAccent, width: 1.0),
-              borderRadius: BorderRadius.all(Radius.circular(32.0)),
+            SizedBox(height: 24.0),
+            TextField(
+              onChanged: (value) {},
+              decoration: InputDecoration(
+                hintText: 'Password',
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffE8DEF8), width: 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffE8DEF8), width: 2.5),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+              ),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-              borderRadius: BorderRadius.all(Radius.circular(32.0)),
+            SizedBox(height: 24.0),
+            SizedBox(
+              width: 130.0,
+              height: 55.0,
+              child: Material(
+                elevation: 5.0,
+                borderRadius: BorderRadius.circular(30.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: StadiumBorder(),
+                    primary: Color(0xff6750A4),
+                  ),
+                  child: Text(
+                    'Log in',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                    ),
+                  ),
+                  onPressed: () {
+                    // Navigator.pushNamed(context, '/login');
+                  },
+                ),
+              ),
             ),
-          ),
+            SizedBox(
+              height: 15.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Don't have an account?"),
+                SizedBox(
+                  width: 5.0,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/register');
+                  },
+                  child: Text(
+                    'Create an account',
+                    style: TextStyle(
+                      color: Color(0xff6750A4),
+                    ),
+                  ),
+                )
+              ],
+            )
+          ],
         ),
       ),
     );
