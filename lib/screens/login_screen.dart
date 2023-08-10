@@ -119,6 +119,7 @@ class _loginScreenState extends State<loginScreen> {
                   width: 5.0,
                 ),
                 GestureDetector(
+                  behavior: HitTestBehavior.translucent,
                   onTap: () {
                     Navigator.pushNamed(context, '/register');
                   },

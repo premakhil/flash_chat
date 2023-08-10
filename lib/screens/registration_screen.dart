@@ -92,6 +92,26 @@ class _registerScreenState extends State<registerScreen> {
               ),
             ),
             SizedBox(height: 24.0),
+            TextField(
+              onChanged: (value) {},
+              decoration: InputDecoration(
+                hintText: 'Confirm Password',
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffE8DEF8), width: 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffE8DEF8), width: 2.5),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+              ),
+            ),
+            SizedBox(height: 24.0),
             SizedBox(
               width: 130.0,
               height: 55.0,
@@ -104,7 +124,7 @@ class _registerScreenState extends State<registerScreen> {
                     primary: Color(0xff6750A4),
                   ),
                   child: Text(
-                    'Log in',
+                    'Register',
                     style: TextStyle(
                       fontSize: 15.0,
                     ),
@@ -126,6 +146,7 @@ class _registerScreenState extends State<registerScreen> {
                   width: 5.0,
                 ),
                 GestureDetector(
+                  behavior: HitTestBehavior.translucent,
                   onTap: () {
                     Navigator.pop(context);
                   },
