@@ -109,7 +109,7 @@ class _loginScreenState extends State<loginScreen> {
               ),
             ),
             SizedBox(
-              height: 15.0,
+              height: 20.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -123,7 +123,7 @@ class _loginScreenState extends State<loginScreen> {
                     Navigator.pushNamed(context, '/register');
                   },
                   child: Text(
-                    'Create an account',
+                    'Sign Up',
                     style: TextStyle(
                       color: Color(0xff6750A4),
                     ),
