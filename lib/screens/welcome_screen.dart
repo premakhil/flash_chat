@@ -20,20 +20,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 250, 0, 0),
             child: SizedBox(
-              width: 250.0,
-              height: 55.0,
+              width: 220.0,
+              height: 60.0,
               child: Material(
                 elevation: 5.0,
-                borderRadius: BorderRadius.circular(30.0),
+                borderRadius: BorderRadius.circular(20.0),
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: StadiumBorder(),
-                    primary: Color(0xff6750A4),
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Color(0xff6750A4)),
+                    // shape: StadiumBorder(),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0))),
+                    // primary: Color(0xff6750A4),
                   ),
                   child: Text(
                     'Next',
                     style: TextStyle(
-                      fontSize: 15.0,
+                      fontSize: 17.0,
                     ),
                   ),
                   onPressed: () {
