@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class registerScreen extends StatefulWidget {
   const registerScreen({Key? key}) : super(key: key);
@@ -17,8 +18,6 @@ class _registerScreenState extends State<registerScreen> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            // Navigator.pop(context);
-            // Navigator.pop(context);
             Navigator.pushNamed(context, '/');
           },
           icon: Icon(Icons.arrow_back_ios_new_rounded),
@@ -33,6 +32,42 @@ class _registerScreenState extends State<registerScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(width: 2, color: subPurple)),
+                  child: Hero(
+                    tag: 'logo',
+                    child: Image.asset(
+                      'assets/logo.png',
+                      height: 50,
+                      width: 100,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 20.0,
+                ),
+                DefaultTextStyle(
+                  style: TextStyle(
+                      fontSize: 40.0,
+                      // fontFamily: 'RobotoMono',
+                      color: mainPurple,
+                      fontWeight: FontWeight.w900),
+                  child: AnimatedTextKit(
+                    animatedTexts: [
+                      TypewriterAnimatedText('Flash Chat',
+                          speed: const Duration(milliseconds: 150))
+                    ],
+                    repeatForever: false,
+                    totalRepeatCount: 5,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 35.0),
             TextField(
               onChanged: (value) {},
               decoration: InputDecoration(

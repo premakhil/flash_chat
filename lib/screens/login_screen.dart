@@ -32,14 +32,42 @@ class _loginScreenState extends State<loginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            DefaultTextStyle(
-              style: TextStyle(
-                  fontSize: 30.0, fontFamily: 'Agne', color: mainPurple),
-              child: AnimatedTextKit(
-                animatedTexts: [TypewriterAnimatedText('Flash Chat')],
-              ),
+            Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(width: 2, color: subPurple)),
+                  child: Hero(
+                    tag: 'logo',
+                    child: Image.asset(
+                      'assets/logo.png',
+                      height: 50,
+                      width: 100,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 20.0,
+                ),
+                DefaultTextStyle(
+                  style: TextStyle(
+                      fontSize: 40.0,
+                      // fontFamily: 'RobotoMono',
+                      color: mainPurple,
+                      fontWeight: FontWeight.w900),
+                  child: AnimatedTextKit(
+                    animatedTexts: [
+                      TypewriterAnimatedText('Flash Chat',
+                          speed: const Duration(milliseconds: 150))
+                    ],
+                    repeatForever: false,
+                    totalRepeatCount: 5,
+                  ),
+                ),
+              ],
             ),
-            SizedBox(height: 24.0),
+            SizedBox(height: 50.0),
             TextField(
               onChanged: (value) {},
               decoration: InputDecoration(

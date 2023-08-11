@@ -18,9 +18,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(
-            'assets/logo.png',
-            height: 150,
+          Hero(
+            tag: 'logo',
+            child: Image.asset(
+              'assets/logo.png',
+              height: 150,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
