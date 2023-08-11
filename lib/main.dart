@@ -15,9 +15,9 @@ class FlashChat extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         // appBarTheme: Color(0xFF6750A4),
       ),
-      initialRoute: '/home',
+      initialRoute: '/',
       routes: {
-        '/home': (context) => WelcomeScreen(),
+        '/': (context) => WelcomeScreen(),
         '/login': (context) => loginScreen(),
         '/register': (context) => registerScreen(),
         '/chat': (context) => chatScreen(),
