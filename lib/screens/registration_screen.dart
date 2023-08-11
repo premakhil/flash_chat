@@ -18,7 +18,7 @@ class _registerScreenState extends State<registerScreen> {
           onPressed: () {
             // Navigator.pop(context);
             // Navigator.pop(context);
-            Navigator.pushNamed(context, '/home');
+            Navigator.pushNamed(context, '/');
           },
           icon: Icon(Icons.arrow_back_ios_new_rounded),
         ),

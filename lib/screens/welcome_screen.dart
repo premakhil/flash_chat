@@ -12,13 +12,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         // appBar: AppBar(),
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      // crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 250, 0, 0),
+        body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/logo.png',
+            height: 150,
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
             child: SizedBox(
               width: 220.0,
               height: 60.0,
@@ -47,9 +51,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
               ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     ));
   }
 }
@@ -57,3 +61,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
 // E8DEF8
 // 6750A4
+
+// 5063A4
+
+
+// D9D3E8
