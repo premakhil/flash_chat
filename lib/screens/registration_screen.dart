@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flash_chat/constants.dart';
 
 class registerScreen extends StatefulWidget {
   const registerScreen({Key? key}) : super(key: key);
@@ -125,7 +126,7 @@ class _registerScreenState extends State<registerScreen> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: StadiumBorder(),
-                    primary: Color(0xff6750A4),
+                    primary: mainPurple,
                   ),
                   child: Text(
                     'Register',
@@ -157,7 +158,7 @@ class _registerScreenState extends State<registerScreen> {
                   child: Text(
                     'Sign In',
                     style: TextStyle(
-                      color: Color(0xff6750A4),
+                      color: mainPurple,
                     ),
                   ),
                 )

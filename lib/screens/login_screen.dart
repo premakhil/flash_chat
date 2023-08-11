@@ -1,20 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flash_chat/constants.dart';
 
-// class loginScreen extends StatefulWidget {
-//   const loginScreen({Key? key}) : super(key: key);
-
-//   @override
-//   State<loginScreen> createState() => _loginScreenState();
-// }
-
-// class _loginScreenState extends State<loginScreen> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-
-//     )
-//   }
-// }
 class loginScreen extends StatefulWidget {
   const loginScreen({Key? key}) : super(key: key);
 
@@ -45,6 +32,14 @@ class _loginScreenState extends State<loginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            DefaultTextStyle(
+              style: TextStyle(
+                  fontSize: 30.0, fontFamily: 'Agne', color: mainPurple),
+              child: AnimatedTextKit(
+                animatedTexts: [TypewriterAnimatedText('Flash Chat')],
+              ),
+            ),
+            SizedBox(height: 24.0),
             TextField(
               onChanged: (value) {},
               decoration: InputDecoration(
@@ -96,7 +91,7 @@ class _loginScreenState extends State<loginScreen> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: StadiumBorder(),
-                    primary: Color(0xff6750A4),
+                    primary: mainPurple,
                   ),
                   child: Text(
                     'Log in',
@@ -128,7 +123,7 @@ class _loginScreenState extends State<loginScreen> {
                   child: Text(
                     'Sign Up',
                     style: TextStyle(
-                      color: Color(0xff6750A4),
+                      color: mainPurple,
                     ),
                   ),
                 )
