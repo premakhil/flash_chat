@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
+import 'package:flash_chat/wave_clip.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -12,7 +13,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(),
         body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -60,12 +60,3 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     ));
   }
 }
-
-
-// E8DEF8
-// 6750A4
-
-// 5063A4
-
-
-// D9D3E8
