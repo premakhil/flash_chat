@@ -19,8 +19,10 @@ class _registerScreenState extends State<registerScreen> {
         leading: IconButton(
           onPressed: () {
             // Navigator.pushNamed(context, '/');
-            Navigator.pop(context);
-            Navigator.pop(context);
+            // Navigator.pop(context);
+            // Navigator.pop(context);
+
+            Navigator.popUntil(context, ModalRoute.withName('/'));
           },
           icon: Icon(Icons.arrow_back_ios_new_rounded),
         ),
