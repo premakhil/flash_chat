@@ -33,7 +33,8 @@ class _registerScreenState extends State<registerScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          // physics: BouncingScrollPhysics(),
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.stretch,
