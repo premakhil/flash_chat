@@ -16,16 +16,8 @@ class _registerScreenState extends State<registerScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            // Navigator.pushNamed(context, '/');
-            // Navigator.pop(context);
-            // Navigator.pop(context);
-
-            Navigator.popUntil(context, ModalRoute.withName('/'));
-          },
-          icon: Icon(Icons.arrow_back_ios_new_rounded),
-        ),
+        leading: null,
+        automaticallyImplyLeading: false,
         iconTheme: IconThemeData(
           color: Color(0xff6750A4),
         ),
@@ -74,8 +66,8 @@ class _registerScreenState extends State<registerScreen> {
                           TypewriterAnimatedText('Flash Chat',
                               speed: const Duration(milliseconds: 150))
                         ],
-                        repeatForever: false,
-                        totalRepeatCount: 5,
+                        repeatForever: true,
+                        // totalRepeatCount: 5,
                       ),
                     ),
                   ),
@@ -119,9 +111,7 @@ class _registerScreenState extends State<registerScreen> {
                         fontSize: 15.0,
                       ),
                     ),
-                    onPressed: () {
-                      // Navigator.pushNamed(context, '/login');
-                    },
+                    onPressed: () {},
                   ),
                 ),
               ),
@@ -138,7 +128,9 @@ class _registerScreenState extends State<registerScreen> {
                   GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
+                      Navigator.popUntil(
+                          context, ModalRoute.withName('/login'));
                     },
                     child: Text(
                       'Sign In',

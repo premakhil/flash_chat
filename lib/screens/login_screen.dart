@@ -16,12 +16,7 @@ class _loginScreenState extends State<loginScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios_new_rounded),
-        ),
+        leading: null,
         iconTheme: IconThemeData(
           color: Color(0xff6750A4),
         ),
@@ -70,8 +65,8 @@ class _loginScreenState extends State<loginScreen> {
                           TypewriterAnimatedText('Flash Chat',
                               speed: const Duration(milliseconds: 150))
                         ],
-                        repeatForever: false,
-                        totalRepeatCount: 5,
+                        repeatForever: true,
+                        // totalRepeatCount: 5,
                       ),
                     ),
                   ),
