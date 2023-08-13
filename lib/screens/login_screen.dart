@@ -70,45 +70,13 @@ class _loginScreenState extends State<loginScreen> {
             SizedBox(height: 50.0),
             TextField(
               onChanged: (value) {},
-              decoration: InputDecoration(
-                hintText: 'E-mail',
-                hintStyle: TextStyle(color: Colors.blueGrey[200]),
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xffE8DEF8), width: 1.0),
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xffE8DEF8), width: 2.5),
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                ),
-              ),
+              decoration: kTextFieldDecoration.copyWith(hintText: 'E-mail'),
             ),
             SizedBox(height: 24.0),
             TextField(
-              onChanged: (value) {},
-              decoration: InputDecoration(
-                hintText: 'Password',
-                hintStyle: TextStyle(color: Colors.blueGrey[200]),
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xffE8DEF8), width: 1.0),
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xffE8DEF8), width: 2.5),
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                ),
-              ),
-            ),
+                onChanged: (value) {},
+                decoration:
+                    kTextFieldDecoration.copyWith(hintText: 'Password')),
             SizedBox(height: 24.0),
             SizedBox(
               width: 130.0,
