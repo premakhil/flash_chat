@@ -42,35 +42,41 @@ class _registerScreenState extends State<registerScreen> {
               SizedBox(height: 50),
               Row(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 2, color: subPurple)),
-                    child: Hero(
-                      tag: 'logo',
-                      child: Image.asset(
-                        'assets/logo.png',
-                        height: 50,
-                        width: 100,
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                          border: Border.all(width: 2, color: subPurple)),
+                      child: Hero(
+                        tag: 'logo',
+                        child: Image.asset(
+                          'assets/logo_circular.png',
+                          height: 50,
+                          width: 100,
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(
                     width: 20.0,
                   ),
-                  DefaultTextStyle(
-                    style: TextStyle(
-                        fontSize: 40.0,
-                        // fontFamily: 'RobotoMono',
-                        color: mainPurple,
-                        fontWeight: FontWeight.w900),
-                    child: AnimatedTextKit(
-                      animatedTexts: [
-                        TypewriterAnimatedText('Flash Chat',
-                            speed: const Duration(milliseconds: 150))
-                      ],
-                      repeatForever: false,
-                      totalRepeatCount: 5,
+                  Expanded(
+                    flex: 3,
+                    child: DefaultTextStyle(
+                      style: TextStyle(
+                          fontSize: 40.0,
+                          // fontFamily: 'RobotoMono',
+                          color: mainPurple,
+                          fontWeight: FontWeight.w900),
+                      child: AnimatedTextKit(
+                        animatedTexts: [
+                          TypewriterAnimatedText('Flash Chat',
+                              speed: const Duration(milliseconds: 150))
+                        ],
+                        repeatForever: false,
+                        totalRepeatCount: 5,
+                      ),
                     ),
                   ),
                 ],

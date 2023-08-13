@@ -20,7 +20,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           Hero(
             tag: 'logo',
             child: Image.asset(
-              'assets/logo.png',
+              'assets/logo_circular.png',
               height: 150,
             ),
           ),

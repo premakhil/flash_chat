@@ -42,12 +42,12 @@ class _loginScreenState extends State<loginScreen> {
                     flex: 1,
                     child: Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(40),
                           border: Border.all(width: 2, color: subPurple)),
                       child: Hero(
                         tag: 'logo',
                         child: Image.asset(
-                          'assets/logo.png',
+                          'assets/logo_circular.png',
                           height: 50,
                           width: 100,
                         ),
