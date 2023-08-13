@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
-import 'package:flash_chat/wave_clip.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
