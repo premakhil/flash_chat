@@ -45,8 +45,8 @@ class _chatTilesState extends State<chatTiles> {
                 backgroundColor: Colors.white,
                 content: Text(
                   "Log Out?",
-                  style: TextStyle(
-                      color: Colors.grey[600], fontWeight: FontWeight.w800),
+                  style:
+                      TextStyle(color: mainPurple, fontWeight: FontWeight.w800),
                 ),
                 actions: <Widget>[
                   Row(
@@ -56,7 +56,7 @@ class _chatTilesState extends State<chatTiles> {
                         style: ButtonStyle(
                           overlayColor: MaterialStateProperty.all(Colors.white),
                           foregroundColor:
-                              MaterialStateProperty.all(mainPurple),
+                              MaterialStateProperty.all(Colors.grey[600]),
                         ),
                         onPressed: () {
                           Navigator.of(ctx).pop();
@@ -77,7 +77,7 @@ class _chatTilesState extends State<chatTiles> {
                         style: ButtonStyle(
                           overlayColor: MaterialStateProperty.all(Colors.white),
                           foregroundColor:
-                              MaterialStateProperty.all(Colors.grey[600]),
+                              MaterialStateProperty.all(mainPurple),
                         ),
                         onPressed: () {
                           Navigator.of(ctx).pop();
