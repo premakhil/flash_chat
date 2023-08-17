@@ -1,3 +1,4 @@
+import 'package:flash_chat/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -32,6 +33,17 @@ class _chatTilesState extends State<chatTiles> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: mainPurple),
+          onPressed: () {
+            Navigator.popUntil(context, ModalRoute.withName('/login'));
+            _auth.signOut();
+          },
+        ),
+      ),
       body: Center(
         child: Text('Tiles'),
       ),
