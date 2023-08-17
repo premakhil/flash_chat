@@ -150,7 +150,6 @@ class _registerScreenState extends State<registerScreen> {
                   GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
-                      // Navigator.pop(context);
                       Navigator.popUntil(
                           context, ModalRoute.withName('/login'));
                     },

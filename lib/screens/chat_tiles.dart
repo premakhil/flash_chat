@@ -39,8 +39,63 @@ class _chatTilesState extends State<chatTiles> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: mainPurple),
           onPressed: () {
-            Navigator.popUntil(context, ModalRoute.withName('/login'));
-            _auth.signOut();
+            showDialog(
+              context: context,
+              builder: (ctx) => AlertDialog(
+                backgroundColor: Colors.white,
+                content: Text(
+                  "Log Out?",
+                  style: TextStyle(
+                      color: Colors.grey[600], fontWeight: FontWeight.w800),
+                ),
+                actions: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextButton(
+                        style: ButtonStyle(
+                          overlayColor: MaterialStateProperty.all(Colors.white),
+                          foregroundColor:
+                              MaterialStateProperty.all(mainPurple),
+                        ),
+                        onPressed: () {
+                          Navigator.of(ctx).pop();
+                          Navigator.popUntil(
+                              context, ModalRoute.withName('/login'));
+                          _auth.signOut();
+                        },
+                        child: Container(
+                          color: Colors.white,
+                          padding: const EdgeInsets.all(14),
+                          child: const Text(
+                            "Yes",
+                            style: TextStyle(fontSize: 17),
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        style: ButtonStyle(
+                          overlayColor: MaterialStateProperty.all(Colors.white),
+                          foregroundColor:
+                              MaterialStateProperty.all(Colors.grey[600]),
+                        ),
+                        onPressed: () {
+                          Navigator.of(ctx).pop();
+                        },
+                        child: Container(
+                          color: Colors.white,
+                          padding: const EdgeInsets.all(14),
+                          child: const Text(
+                            "No",
+                            style: TextStyle(fontSize: 17),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            );
           },
         ),
       ),
