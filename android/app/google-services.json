@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "278527244290",
+    "project_id": "flash-chat-dfce6",
+    "storage_bucket": "flash-chat-dfce6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278527244290:android:a1a94e13341971eb1d4f1b",
+        "android_client_info": {
+          "package_name": "com.premakhil.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278527244290-p1ro7mp0i2p24mlvkj5hsen9fgia7nt8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZ_miqWtndOou4Isw1hYOLrnofkb5tiWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278527244290-p1ro7mp0i2p24mlvkj5hsen9fgia7nt8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

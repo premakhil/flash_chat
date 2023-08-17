@@ -79,6 +79,7 @@ class _loginScreenState extends State<loginScreen> {
               ),
               SizedBox(height: 24.0),
               TextField(
+                  obscureText: true,
                   onChanged: (value) {},
                   decoration:
                       kTextFieldDecoration.copyWith(hintText: 'Password')),

@@ -85,11 +85,13 @@ class _registerScreenState extends State<registerScreen> {
                       kTextFieldDecoration.copyWith(hintText: 'E-mail')),
               SizedBox(height: 25.0),
               TextField(
+                  obscureText: true,
                   onChanged: (value) {},
                   decoration:
                       kTextFieldDecoration.copyWith(hintText: 'Password')),
               SizedBox(height: 25.0),
               TextField(
+                  obscureText: true,
                   onChanged: (value) {},
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Confirm Password')),
