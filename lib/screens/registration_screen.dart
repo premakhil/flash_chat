@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class registerScreen extends StatefulWidget {
   const registerScreen({Key? key}) : super(key: key);
@@ -10,6 +11,10 @@ class registerScreen extends StatefulWidget {
 }
 
 class _registerScreenState extends State<registerScreen> {
+  final _auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,13 +85,18 @@ class _registerScreenState extends State<registerScreen> {
                       kTextFieldDecoration.copyWith(hintText: 'Username')),
               SizedBox(height: 25.0),
               TextField(
-                  onChanged: (value) {},
+                  keyboardType: TextInputType.emailAddress,
+                  onChanged: (value) {
+                    email = value;
+                  },
                   decoration:
                       kTextFieldDecoration.copyWith(hintText: 'E-mail')),
               SizedBox(height: 25.0),
               TextField(
                   obscureText: true,
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    password = value;
+                  },
                   decoration:
                       kTextFieldDecoration.copyWith(hintText: 'Password')),
               SizedBox(height: 25.0),
@@ -113,7 +123,17 @@ class _registerScreenState extends State<registerScreen> {
                         fontSize: 15.0,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () async {
+                      try {
+                        final user = await _auth.createUserWithEmailAndPassword(
+                            email: email, password: password);
+                        if (user != null) {
+                          Navigator.pushNamed(context, '/chatTiles');
+                        }
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
                   ),
                 ),
               ),

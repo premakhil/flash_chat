@@ -74,6 +74,7 @@ class _loginScreenState extends State<loginScreen> {
               ),
               SizedBox(height: 50.0),
               TextField(
+                keyboardType: TextInputType.emailAddress,
                 onChanged: (value) {},
                 decoration: kTextFieldDecoration.copyWith(hintText: 'E-mail'),
               ),
