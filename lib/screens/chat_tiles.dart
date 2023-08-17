@@ -77,7 +77,7 @@ class _chatTilesState extends State<chatTiles> {
                         style: ButtonStyle(
                           overlayColor: MaterialStateProperty.all(Colors.white),
                           foregroundColor:
-                              MaterialStateProperty.all(mainPurple),
+                              MaterialStateProperty.all(Colors.grey[600]),
                         ),
                         onPressed: () {
                           Navigator.of(ctx).pop();
