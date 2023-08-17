@@ -29,11 +29,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Hero(
-              tag: 'logo',
-              child: Image.asset(
-                'assets/logo_circular.png',
-                height: 100,
+            Material(
+              borderRadius: BorderRadius.circular(50),
+              elevation: 10.0,
+              child: Hero(
+                tag: 'logo',
+                child: Image.asset(
+                  'assets/logo_circular.png',
+                  height: 100,
+                ),
               ),
             ),
           ],
