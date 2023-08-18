@@ -33,70 +33,89 @@ class _chatTilesState extends State<chatTiles> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: mainPurple),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (ctx) => AlertDialog(
-                backgroundColor: Colors.white,
-                content: Text(
-                  "Log Out?",
-                  style:
-                      TextStyle(color: mainPurple, fontWeight: FontWeight.w800),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: mainPurple),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (ctx) => AlertDialog(
+                  backgroundColor: Colors.white,
+                  content: Text(
+                    "Log Out?",
+                    style: TextStyle(
+                        color: mainPurple, fontWeight: FontWeight.w800),
+                  ),
+                  actions: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        TextButton(
+                          style: ButtonStyle(
+                            overlayColor:
+                                MaterialStateProperty.all(Colors.white),
+                            foregroundColor:
+                                MaterialStateProperty.all(Colors.grey[600]),
+                          ),
+                          onPressed: () {
+                            Navigator.of(ctx).pop();
+                            _auth.signOut();
+                            Navigator.popUntil(
+                                context, ModalRoute.withName('/login'));
+                          },
+                          child: Container(
+                            color: Colors.white,
+                            padding: const EdgeInsets.all(14),
+                            child: const Text(
+                              "Yes",
+                              style: TextStyle(fontSize: 17),
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          style: ButtonStyle(
+                            overlayColor:
+                                MaterialStateProperty.all(Colors.white),
+                            foregroundColor:
+                                MaterialStateProperty.all(Colors.grey[600]),
+                          ),
+                          onPressed: () {
+                            Navigator.of(ctx).pop();
+                          },
+                          child: Container(
+                            color: Colors.white,
+                            padding: const EdgeInsets.all(14),
+                            child: const Text(
+                              "No",
+                              style: TextStyle(fontSize: 17),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
-                actions: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TextButton(
-                        style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.white),
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.grey[600]),
-                        ),
-                        onPressed: () {
-                          Navigator.of(ctx).pop();
-                          _auth.signOut();
-                          Navigator.popUntil(
-                              context, ModalRoute.withName('/login'));
-                        },
-                        child: Container(
-                          color: Colors.white,
-                          padding: const EdgeInsets.all(14),
-                          child: const Text(
-                            "Yes",
-                            style: TextStyle(fontSize: 17),
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.white),
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.grey[600]),
-                        ),
-                        onPressed: () {
-                          Navigator.of(ctx).pop();
-                        },
-                        child: Container(
-                          color: Colors.white,
-                          padding: const EdgeInsets.all(14),
-                          child: const Text(
-                            "No",
-                            style: TextStyle(fontSize: 17),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
+              );
+            },
+          ),
+          title: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                border: Border.all(width: 2, color: subPurple)),
+            child: Hero(
+              tag: 'logo',
+              child: Image.asset(
+                'assets/logo_circular.png',
+                height: 50,
+                width: 80,
               ),
-            );
-          },
+            ),
+          ),
+          centerTitle: true,
         ),
       ),
       body: Center(
