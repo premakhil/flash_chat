@@ -88,11 +88,11 @@ class _loginScreenState extends State<loginScreen> {
                 },
                 decoration: kTextFieldDecoration.copyWith(
                   hintText: 'E-mail',
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: borderPurpleforEmail, width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
+                  // enabledBorder: OutlineInputBorder(
+                  //   borderSide:
+                  //       BorderSide(color: borderPurpleforEmail, width: 1.0),
+                  //   borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                  // ),
                 ),
               ),
               SizedBox(height: 24.0),
@@ -106,11 +106,11 @@ class _loginScreenState extends State<loginScreen> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Password',
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: borderPurpleforPassword, width: 1.0),
-                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                    ),
+                    // enabledBorder: OutlineInputBorder(
+                    //   borderSide: BorderSide(
+                    //       color: borderPurpleforPassword, width: 1.0),
+                    //   borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    // ),
                   )),
               SizedBox(height: 24.0),
               SizedBox(

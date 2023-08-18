@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flash_chat/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -118,25 +120,43 @@ class _chatTilesState extends State<chatTiles> {
           centerTitle: true,
         ),
       ),
-      body: Column(children: [
-        Row(
-          children: [
-            // TextField(),
-            Material(
-              elevation: 5.0,
-              borderRadius: BorderRadius.circular(30.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: StadiumBorder(),
-                  primary: mainPurple,
+      body: SafeArea(
+        child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(
+                  width: 6,
                 ),
-                child: Text('click'),
-                onPressed: () {},
-              ),
+                Expanded(
+                  child: TextField(
+                    onChanged: (value) {},
+                    decoration:
+                        kTextFieldDecoration.copyWith(hintText: 'Message'),
+                  ),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                SizedBox(
+                  width: 50.0,
+                  height: 50.0,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: StadiumBorder(),
+                      primary: mainPurple,
+                    ),
+                    child: Icon(Icons.send),
+                    onPressed: () {},
+                  ),
+                ),
+              ],
             ),
-          ],
-        )
-      ]),
+          )
+        ]),
+      ),
     );
   }
 }
