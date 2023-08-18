@@ -15,6 +15,8 @@ class _registerScreenState extends State<registerScreen> {
   late String email;
   late String password;
 
+  bool showSpinner = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,12 +126,19 @@ class _registerScreenState extends State<registerScreen> {
                       ),
                     ),
                     onPressed: () async {
+                      setState(() {
+                        showSpinner = true;
+                      });
                       try {
                         final user = await _auth.createUserWithEmailAndPassword(
                             email: email, password: password);
                         if (user != null) {
                           Navigator.pushNamed(context, '/chatTiles');
                         }
+
+                        setState(() {
+                          showSpinner = false;
+                        });
                       } catch (e) {
                         print(e);
                       }

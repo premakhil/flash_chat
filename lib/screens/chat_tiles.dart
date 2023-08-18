@@ -60,9 +60,9 @@ class _chatTilesState extends State<chatTiles> {
                         ),
                         onPressed: () {
                           Navigator.of(ctx).pop();
+                          _auth.signOut();
                           Navigator.popUntil(
                               context, ModalRoute.withName('/login'));
-                          _auth.signOut();
                         },
                         child: Container(
                           color: Colors.white,
