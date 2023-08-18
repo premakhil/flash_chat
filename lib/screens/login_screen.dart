@@ -82,14 +82,15 @@ class _loginScreenState extends State<loginScreen> {
                 keyboardType: TextInputType.emailAddress,
                 onChanged: (value) {
                   setState(() {
-                    borderPurple = subPurple;
+                    borderPurpleforEmail = subPurple;
                   });
                   email = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
                   hintText: 'E-mail',
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: borderPurple, width: 1.0),
+                    borderSide:
+                        BorderSide(color: borderPurpleforEmail, width: 1.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                 ),
@@ -99,14 +100,15 @@ class _loginScreenState extends State<loginScreen> {
                   obscureText: true,
                   onChanged: (value) {
                     setState(() {
-                      borderPurple = subPurple;
+                      borderPurpleforPassword = subPurple;
                     });
                     password = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Password',
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: borderPurple, width: 1.0),
+                      borderSide: BorderSide(
+                          color: borderPurpleforPassword, width: 1.0),
                       borderRadius: BorderRadius.all(Radius.circular(32.0)),
                     ),
                   )),
@@ -151,7 +153,8 @@ class _loginScreenState extends State<loginScreen> {
                       } catch (e) {
                         setState(() {
                           showSpinner = false;
-                          borderPurple = Colors.red;
+                          borderPurpleforEmail = Colors.red;
+                          borderPurpleforPassword = Colors.red;
                         });
 
                         print(e);

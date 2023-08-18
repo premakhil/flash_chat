@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class registerScreen extends StatefulWidget {
   const registerScreen({Key? key}) : super(key: key);
@@ -90,17 +91,35 @@ class _registerScreenState extends State<registerScreen> {
                   keyboardType: TextInputType.emailAddress,
                   onChanged: (value) {
                     email = value;
+                    setState(() {
+                      borderPurpleforEmail = subPurple;
+                    });
                   },
-                  decoration:
-                      kTextFieldDecoration.copyWith(hintText: 'E-mail')),
+                  decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'E-mail',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: borderPurpleforEmail, width: 1.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                  )),
               SizedBox(height: 25.0),
               TextField(
                   obscureText: true,
                   onChanged: (value) {
                     password = value;
+                    setState(() {
+                      borderPurpleforPassword = subPurple;
+                    });
                   },
-                  decoration:
-                      kTextFieldDecoration.copyWith(hintText: 'Password')),
+                  decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Password',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: borderPurpleforPassword, width: 1.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                  )),
               SizedBox(height: 25.0),
               TextField(
                   obscureText: true,
@@ -119,15 +138,22 @@ class _registerScreenState extends State<registerScreen> {
                       shape: StadiumBorder(),
                       primary: mainPurple,
                     ),
-                    child: Text(
-                      'Register',
-                      style: TextStyle(
-                        fontSize: 15.0,
-                      ),
-                    ),
+                    child: !showSpinner
+                        ? Text(
+                            'Register',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                            ),
+                          )
+                        : SpinKitDualRing(
+                            color: Colors.white,
+                            size: 25.0,
+                            lineWidth: 3.0,
+                          ),
                     onPressed: () async {
                       setState(() {
                         showSpinner = true;
+                        FocusScope.of(context).requestFocus(new FocusNode());
                       });
                       try {
                         final user = await _auth.createUserWithEmailAndPassword(
@@ -141,6 +167,11 @@ class _registerScreenState extends State<registerScreen> {
                         });
                       } catch (e) {
                         print(e);
+                        setState(() {
+                          showSpinner = false;
+                          borderPurpleforEmail = Colors.red;
+                          borderPurpleforPassword = Colors.red;
+                        });
                       }
                     },
                   ),
