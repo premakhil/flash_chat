@@ -100,7 +100,7 @@ class _chatTilesState extends State<chatTiles> {
         ),
       ),
       body: Center(
-        child: Text('Tiles'),
+        child: Column(children: []),
       ),
     );
   }
