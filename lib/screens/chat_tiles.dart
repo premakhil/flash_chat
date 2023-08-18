@@ -118,9 +118,25 @@ class _chatTilesState extends State<chatTiles> {
           centerTitle: true,
         ),
       ),
-      body: Center(
-        child: Column(children: []),
-      ),
+      body: Column(children: [
+        Row(
+          children: [
+            // TextField(),
+            Material(
+              elevation: 5.0,
+              borderRadius: BorderRadius.circular(30.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: StadiumBorder(),
+                  primary: mainPurple,
+                ),
+                child: Text('click'),
+                onPressed: () {},
+              ),
+            ),
+          ],
+        )
+      ]),
     );
   }
 }
