@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class loginScreen extends StatefulWidget {
   const loginScreen({Key? key}) : super(key: key);
@@ -63,7 +64,6 @@ class _loginScreenState extends State<loginScreen> {
                     child: DefaultTextStyle(
                       style: TextStyle(
                           fontSize: 40.0,
-                          // fontFamily: 'RobotoMono',
                           color: mainPurple,
                           fontWeight: FontWeight.w900),
                       child: AnimatedTextKit(
@@ -72,7 +72,6 @@ class _loginScreenState extends State<loginScreen> {
                               speed: const Duration(milliseconds: 150))
                         ],
                         repeatForever: true,
-                        // totalRepeatCount: 5,
                       ),
                     ),
                   ),
@@ -82,18 +81,35 @@ class _loginScreenState extends State<loginScreen> {
               TextField(
                 keyboardType: TextInputType.emailAddress,
                 onChanged: (value) {
+                  setState(() {
+                    borderPurple = subPurple;
+                  });
                   email = value;
                 },
-                decoration: kTextFieldDecoration.copyWith(hintText: 'E-mail'),
+                decoration: kTextFieldDecoration.copyWith(
+                  hintText: 'E-mail',
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: borderPurple, width: 1.0),
+                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                  ),
+                ),
               ),
               SizedBox(height: 24.0),
               TextField(
                   obscureText: true,
                   onChanged: (value) {
+                    setState(() {
+                      borderPurple = subPurple;
+                    });
                     password = value;
                   },
-                  decoration:
-                      kTextFieldDecoration.copyWith(hintText: 'Password')),
+                  decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Password',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: borderPurple, width: 1.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                  )),
               SizedBox(height: 24.0),
               SizedBox(
                 width: 130.0,
@@ -106,20 +122,38 @@ class _loginScreenState extends State<loginScreen> {
                       shape: StadiumBorder(),
                       primary: mainPurple,
                     ),
-                    child: Text(
-                      'Log in',
-                      style: TextStyle(
-                        fontSize: 15.0,
-                      ),
-                    ),
+                    child: !showSpinner
+                        ? Text(
+                            'Log in',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                            ),
+                          )
+                        : SpinKitDualRing(
+                            color: Colors.white,
+                            size: 25.0,
+                            lineWidth: 3.0,
+                          ),
                     onPressed: () async {
+                      setState(() {
+                        showSpinner = true;
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                      });
                       try {
                         final user = await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
                         if (user != null) {
                           Navigator.pushNamed(context, '/chatTiles');
                         }
+                        setState(() {
+                          showSpinner = false;
+                        });
                       } catch (e) {
+                        setState(() {
+                          showSpinner = false;
+                          borderPurple = Colors.red;
+                        });
+
                         print(e);
                       }
                     },
