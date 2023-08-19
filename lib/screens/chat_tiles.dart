@@ -1,8 +1,8 @@
 import 'dart:io';
-
 import 'package:flash_chat/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class chatTiles extends StatefulWidget {
   const chatTiles({Key? key}) : super(key: key);
@@ -14,6 +14,8 @@ class chatTiles extends StatefulWidget {
 class _chatTilesState extends State<chatTiles> {
   final _auth = FirebaseAuth.instance;
   late User loggedinUser;
+  late String messageText;
+  final _firestore = FirebaseFirestore.instance;
 
   @override
   void initState() {
@@ -30,6 +32,14 @@ class _chatTilesState extends State<chatTiles> {
       }
     } catch (e) {
       print(e);
+    }
+  }
+
+  void messageStream() async {
+    await for (var snapshot in _firestore.collection('messages').snapshots()) {
+      for (var message in snapshot.docs) {
+        print(message.data());
+      }
     }
   }
 
@@ -122,6 +132,11 @@ class _chatTilesState extends State<chatTiles> {
       ),
       body: SafeArea(
         child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+          ElevatedButton(
+              onPressed: () {
+                messageStream();
+              },
+              child: Text('click')),
           Padding(
             padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
             child: Row(
@@ -132,7 +147,9 @@ class _chatTilesState extends State<chatTiles> {
                 ),
                 Expanded(
                   child: TextField(
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      messageText = value;
+                    },
                     decoration:
                         kTextFieldDecoration.copyWith(hintText: 'Message'),
                   ),
@@ -149,7 +166,10 @@ class _chatTilesState extends State<chatTiles> {
                       primary: mainPurple,
                     ),
                     child: Icon(Icons.send),
-                    onPressed: () {},
+                    onPressed: () {
+                      _firestore.collection('messages').add(
+                          {'text': messageText, 'sender': loggedinUser.email});
+                    },
                   ),
                 ),
               ],
