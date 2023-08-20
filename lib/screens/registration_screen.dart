@@ -18,6 +18,8 @@ class _registerScreenState extends State<registerScreen> {
 
   bool showSpinner = false;
 
+  // static late String name;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

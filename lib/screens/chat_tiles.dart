@@ -29,6 +29,11 @@ class _chatTilesState extends State<chatTiles> {
 
       if (user != null) {
         loggedinUser = user;
+
+        _firestore
+            .collection('users')
+            .doc(loggedinUser.uid)
+            .set({'email': loggedinUser.email, 'userID': loggedinUser.uid});
       }
     } catch (e) {
       print(e);
@@ -167,8 +172,11 @@ class _chatTilesState extends State<chatTiles> {
                     ),
                     child: Icon(Icons.send),
                     onPressed: () {
-                      _firestore.collection('messages').add(
-                          {'text': messageText, 'sender': loggedinUser.email});
+                      _firestore.collection('messages').add({
+                        'text': messageText,
+                        'sender': loggedinUser.email,
+                        'userId': loggedinUser.uid
+                      });
                     },
                   ),
                 ),
