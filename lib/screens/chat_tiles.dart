@@ -34,6 +34,7 @@ class _chatTilesState extends State<chatTiles> {
         _firestore.collection('users').doc(loggedinUser.uid).set({
           'email': loggedinUser.email,
           'userID': loggedinUser.uid,
+          'name': loggedinUser.displayName
           // 'name': 'tempName'
         });
       }

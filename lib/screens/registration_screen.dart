@@ -15,11 +15,11 @@ class registerScreen extends StatefulWidget {
 
 class _registerScreenState extends State<registerScreen> {
   final _auth = FirebaseAuth.instance;
-  late final String email;
-  late final String password;
+  late String email;
+  late String password;
 
   bool showSpinner = false;
-  late final String name;
+  late String name;
 
   @override
   Widget build(BuildContext context) {
@@ -163,6 +163,9 @@ class _registerScreenState extends State<registerScreen> {
                       try {
                         final user = await _auth.createUserWithEmailAndPassword(
                             email: email, password: password);
+
+                        // user.user!.updateDisplayName(name);
+                        await user.user?.updateDisplayName(name);
                         if (user != null) {
                           Navigator.pushNamed(context, '/chatTiles');
                         }
