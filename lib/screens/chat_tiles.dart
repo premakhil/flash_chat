@@ -158,15 +158,14 @@ class _chatTilesState extends State<chatTiles> {
               for (var user in users) {
                 // final userEmail = user.data()?['email'];
                 final userData = user.data() as Map<String, dynamic>;
-                final userEmail = userData['email'];
-                final userName = userData['name'];
-                final userID = userData['userID'];
-                // print(userEmail);
-                // print(userName);
-                // print(userID);
-                // print('break now');
-                final userWidget = Text('$userName');
-                userWidgets.add(userWidget);
+                if (userData['email'] != loggedinUser.email) {
+                  final userEmail = userData['email'];
+                  final userName = userData['name'];
+                  final userID = userData['userID'];
+
+                  final userWidget = Text('$userName');
+                  userWidgets.add(userWidget);
+                }
               }
 
               return Column(children: userWidgets);
