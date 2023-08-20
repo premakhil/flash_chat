@@ -7,7 +7,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class registerScreen extends StatefulWidget {
   const registerScreen({Key? key}) : super(key: key);
 
-  static late String name;
+  // static late String name;
 
   @override
   State<registerScreen> createState() => _registerScreenState();
@@ -15,10 +15,11 @@ class registerScreen extends StatefulWidget {
 
 class _registerScreenState extends State<registerScreen> {
   final _auth = FirebaseAuth.instance;
-  late String email;
-  late String password;
+  late final String email;
+  late final String password;
 
   bool showSpinner = false;
+  late final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +87,7 @@ class _registerScreenState extends State<registerScreen> {
               SizedBox(height: 50.0),
               TextField(
                   onChanged: (value) {
-                    registerScreen.name = value;
+                    name = value;
                   },
                   decoration:
                       kTextFieldDecoration.copyWith(hintText: 'Username')),

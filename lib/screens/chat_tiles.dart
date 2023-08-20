@@ -34,7 +34,7 @@ class _chatTilesState extends State<chatTiles> {
         _firestore.collection('users').doc(loggedinUser.uid).set({
           'email': loggedinUser.email,
           'userID': loggedinUser.uid,
-          'name': registerScreen.name
+          // 'name': 'tempName'
         });
       }
     } catch (e) {
@@ -43,9 +43,10 @@ class _chatTilesState extends State<chatTiles> {
   }
 
   void messageStream() async {
-    await for (var snapshot in _firestore.collection('messages').snapshots()) {
+    await for (var snapshot in _firestore.collection('users').snapshots()) {
       for (var message in snapshot.docs) {
         print(message.data());
+        print("BREAKKKKK");
       }
     }
   }
@@ -138,53 +139,84 @@ class _chatTilesState extends State<chatTiles> {
         ),
       ),
       body: SafeArea(
-        child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          ElevatedButton(
-              onPressed: () {
-                messageStream();
-              },
-              child: Text('click')),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  width: 6,
-                ),
-                Expanded(
-                  child: TextField(
-                    onChanged: (value) {
-                      messageText = value;
-                    },
-                    decoration:
-                        kTextFieldDecoration.copyWith(hintText: 'Message'),
+        child: Column(children: [
+          StreamBuilder<QuerySnapshot>(
+            stream: _firestore.collection('users').snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: mainPurple,
                   ),
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                SizedBox(
-                  width: 50.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: StadiumBorder(),
-                      primary: mainPurple,
-                    ),
-                    child: Icon(Icons.send),
-                    onPressed: () {
-                      _firestore.collection('messages').add({
-                        'text': messageText,
-                        'sender': loggedinUser.email,
-                        'userId': loggedinUser.uid
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-          )
+                );
+              }
+
+              final users = snapshot.data!.docs;
+              List<Text> userWidgets = [];
+
+              for (var user in users) {
+                // final userEmail = user.data()?['email'];
+                final userData = user.data() as Map<String, dynamic>;
+                final userEmail = userData['email'];
+                final userName = userData['name'];
+                final userID = userData['userID'];
+                // print(userEmail);
+                // print(userName);
+                // print(userID);
+                // print('break now');
+                final userWidget = Text('$userName');
+                userWidgets.add(userWidget);
+              }
+
+              return Column(children: userWidgets);
+            },
+          ),
+          // ElevatedButton(
+          //     onPressed: () {
+          //       messageStream();
+          //     },
+          //     child: Text('click')),
+          // Padding(
+          //   padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //     children: [
+          //       SizedBox(
+          //         width: 6,
+          //       ),
+          //       Expanded(
+          //         child: TextField(
+          //           onChanged: (value) {
+          //             messageText = value;
+          //           },
+          //           decoration:
+          //               kTextFieldDecoration.copyWith(hintText: 'Message'),
+          //         ),
+          //       ),
+          //       SizedBox(
+          //         width: 5,
+          //       ),
+          //       SizedBox(
+          //         width: 50.0,
+          //         height: 50.0,
+          //         child: ElevatedButton(
+          //           style: ElevatedButton.styleFrom(
+          //             shape: StadiumBorder(),
+          //             primary: mainPurple,
+          //           ),
+          //           child: Icon(Icons.send),
+          //           onPressed: () {
+          //             _firestore.collection('messages').add({
+          //               'text': messageText,
+          //               'sender': loggedinUser.email,
+          //               'userId': loggedinUser.uid
+          //             });
+          //           },
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // )
         ]),
       ),
     );
