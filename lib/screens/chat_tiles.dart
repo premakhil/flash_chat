@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flash_chat/constants.dart';
+import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -30,10 +31,11 @@ class _chatTilesState extends State<chatTiles> {
       if (user != null) {
         loggedinUser = user;
 
-        _firestore
-            .collection('users')
-            .doc(loggedinUser.uid)
-            .set({'email': loggedinUser.email, 'userID': loggedinUser.uid});
+        _firestore.collection('users').doc(loggedinUser.uid).set({
+          'email': loggedinUser.email,
+          'userID': loggedinUser.uid,
+          'name': registerScreen.name
+        });
       }
     } catch (e) {
       print(e);

@@ -7,6 +7,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class registerScreen extends StatefulWidget {
   const registerScreen({Key? key}) : super(key: key);
 
+  static late String name;
+
   @override
   State<registerScreen> createState() => _registerScreenState();
 }
@@ -17,8 +19,6 @@ class _registerScreenState extends State<registerScreen> {
   late String password;
 
   bool showSpinner = false;
-
-  // static late String name;
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +85,9 @@ class _registerScreenState extends State<registerScreen> {
               ),
               SizedBox(height: 50.0),
               TextField(
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    registerScreen.name = value;
+                  },
                   decoration:
                       kTextFieldDecoration.copyWith(hintText: 'Username')),
               SizedBox(height: 25.0),
