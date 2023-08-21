@@ -108,12 +108,6 @@ class _chatScreenState extends State<chatScreen> {
                             'receiverMail': widget.userEmail,
                             'receiverID': widget.userID
                           });
-
-                          // _firestore.collection('users').doc(loggedinUser.uid).add({
-
-                          // })
-
-                          // addMessages();
                         },
                       ),
                     ),
