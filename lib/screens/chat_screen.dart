@@ -18,9 +18,26 @@ class chatScreen extends StatefulWidget {
 class _chatScreenState extends State<chatScreen> {
   late String messageText;
   late User loggedinUser;
+  final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
 
-  void addMessages() async {}
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser;
+      if (user != null) {
+        loggedinUser = user;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,12 +98,22 @@ class _chatScreenState extends State<chatScreen> {
                           primary: mainPurple,
                         ),
                         child: Icon(Icons.send),
-                        onPressed: () {
-                          // _firestore.collection('messages').add({
-                          //   'text': messageText,
-                          //   'sender': loggedinUser.email,
-                          //   'userId': loggedinUser.uid
-                          // });
+                        onPressed: () async {
+                          await _firestore.collection('messages').add({
+                            'text': messageText,
+                            'sender': loggedinUser.displayName,
+                            'senderMail': loggedinUser.email,
+                            'senderID': loggedinUser.uid,
+                            'receiver': widget.userName,
+                            'receiverMail': widget.userEmail,
+                            'receiverID': widget.userID
+                          });
+
+                          // _firestore.collection('users').doc(loggedinUser.uid).add({
+
+                          // })
+
+                          // addMessages();
                         },
                       ),
                     ),
