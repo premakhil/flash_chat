@@ -24,19 +24,25 @@ const kTextFieldDecoration = InputDecoration(
 );
 
 class userBubble extends StatelessWidget {
-  userBubble({required this.userName});
+  userBubble(
+      {required this.userName, required this.userEmail, required this.userID});
 
   late String userName;
+  late String userEmail;
+  late String userID;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('Hello there $userName');
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => chatScreen(userName: userName)));
+                builder: (context) => chatScreen(
+                      userName: userName,
+                      userEmail: userEmail,
+                      userID: userID,
+                    )));
       },
       child: Padding(
         padding: EdgeInsets.all(3.0),

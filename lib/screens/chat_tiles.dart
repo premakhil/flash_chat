@@ -123,20 +123,20 @@ class _chatTilesState extends State<chatTiles> {
               );
             },
           ),
-          title: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                border: Border.all(width: 2, color: subPurple)),
-            child: Hero(
-              tag: 'logo',
-              child: Image.asset(
-                'assets/logo_circular.png',
-                height: 50,
-                width: 80,
-              ),
-            ),
-          ),
-          centerTitle: true,
+          // title: Container(
+          //   decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.circular(40),
+          //       border: Border.all(width: 2, color: subPurple)),
+          //   child: Hero(
+          //     tag: 'logo',
+          //     child: Image.asset(
+          //       'assets/logo_circular.png',
+          //       height: 50,
+          //       width: 80,
+          //     ),
+          //   ),
+          // ),
+          // centerTitle: true,
         ),
       ),
       body: SafeArea(
@@ -182,8 +182,9 @@ class _chatTilesState extends State<chatTiles> {
                       final userID = userData['userID'];
 
                       final userWidget = userBubble(
-                        userName: userName,
-                      );
+                          userName: userName,
+                          userEmail: userEmail,
+                          userID: userID);
                       userWidgets.add(userWidget);
                     }
                   }
