@@ -198,52 +198,6 @@ class _chatTilesState extends State<chatTiles> {
                   );
                 },
               ),
-              // ElevatedButton(
-              //     onPressed: () {
-              //       messageStream();
-              //     },
-              //     child: Text('click')),
-              // Padding(
-              //   padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //     children: [
-              //       SizedBox(
-              //         width: 6,
-              //       ),
-              //       Expanded(
-              //         child: TextField(
-              //           onChanged: (value) {
-              //             messageText = value;
-              //           },
-              //           decoration:
-              //               kTextFieldDecoration.copyWith(hintText: 'Message'),
-              //         ),
-              //       ),
-              //       SizedBox(
-              //         width: 5,
-              //       ),
-              //       SizedBox(
-              //         width: 50.0,
-              //         height: 50.0,
-              //         child: ElevatedButton(
-              //           style: ElevatedButton.styleFrom(
-              //             shape: StadiumBorder(),
-              //             primary: mainPurple,
-              //           ),
-              //           child: Icon(Icons.send),
-              //           onPressed: () {
-              //             _firestore.collection('messages').add({
-              //               'text': messageText,
-              //               'sender': loggedinUser.email,
-              //               'userId': loggedinUser.uid
-              //             });
-              //           },
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // )
             ]),
       ),
     );
