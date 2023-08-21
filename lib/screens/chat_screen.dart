@@ -20,6 +20,8 @@ class _chatScreenState extends State<chatScreen> {
   late User loggedinUser;
   final _firestore = FirebaseFirestore.instance;
 
+  void addMessages() async {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,11 +50,7 @@ class _chatScreenState extends State<chatScreen> {
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
-          // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Text(widget.userName),
-            // Text(widget.userEmail),
-            // Text(widget.userID),
             Padding(
               padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
               child: Expanded(

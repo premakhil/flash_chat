@@ -43,15 +43,6 @@ class _chatTilesState extends State<chatTiles> {
     }
   }
 
-  void messageStream() async {
-    await for (var snapshot in _firestore.collection('users').snapshots()) {
-      for (var message in snapshot.docs) {
-        print(message.data());
-        print("BREAKKKKK");
-      }
-    }
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
@@ -140,65 +131,59 @@ class _chatTilesState extends State<chatTiles> {
         ),
       ),
       body: SafeArea(
-        child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-                child: Text('People',
-                    style: TextStyle(
-                        fontSize: 40.0,
-                        fontWeight: FontWeight.bold,
-                        color: mainPurple)),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              StreamBuilder<QuerySnapshot>(
-                stream: _firestore.collection('users').snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        backgroundColor: mainPurple,
-                        color: mainPurple,
-                      ),
-                    );
-                  }
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox(
+            height: 30,
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
+            child: Text('People',
+                style: TextStyle(
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold,
+                    color: mainPurple)),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          StreamBuilder<QuerySnapshot>(
+            stream: _firestore.collection('users').snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: mainPurple,
+                    color: mainPurple,
+                  ),
+                );
+              }
 
-                  final users = snapshot.data!.docs;
-                  List<userBubble> userWidgets = [];
+              final users = snapshot.data!.docs;
+              List<userBubble> userWidgets = [];
 
-                  for (var user in users) {
-                    // final userEmail = user.data()?['email'];
-                    final userData = user.data() as Map<String, dynamic>;
-                    if (userData['userID'] != loggedinUser.uid) {
-                      final userEmail = userData['email'];
-                      final userName = userData['name'];
-                      final userID = userData['userID'];
+              for (var user in users) {
+                final userData = user.data() as Map<String, dynamic>;
+                if (userData['userID'] != loggedinUser.uid) {
+                  final userEmail = userData['email'];
+                  final userName = userData['name'];
+                  final userID = userData['userID'];
 
-                      final userWidget = userBubble(
-                          userName: userName,
-                          userEmail: userEmail,
-                          userID: userID);
-                      userWidgets.add(userWidget);
-                    }
-                  }
+                  final userWidget = userBubble(
+                      userName: userName, userEmail: userEmail, userID: userID);
+                  userWidgets.add(userWidget);
+                }
+              }
 
-                  return Expanded(
-                    child: ListView(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 20.0),
-                      children: userWidgets,
-                    ),
-                  );
-                },
-              ),
-            ]),
+              return Expanded(
+                child: ListView(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                  children: userWidgets,
+                ),
+              );
+            },
+          ),
+        ]),
       ),
     );
   }

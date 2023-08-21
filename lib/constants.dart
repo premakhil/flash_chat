@@ -45,7 +45,7 @@ class userBubble extends StatelessWidget {
                     )));
       },
       child: Padding(
-        padding: EdgeInsets.all(3.0),
+        padding: EdgeInsets.all(1.0),
         child: Material(
           // elevation: 1.0,
           color: Color(0xffe8ddff).withOpacity(0.15),
