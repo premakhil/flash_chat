@@ -21,6 +21,8 @@ class _chatScreenState extends State<chatScreen> {
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
 
+  final messagetextController = TextEditingController();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -79,6 +81,7 @@ class _chatScreenState extends State<chatScreen> {
                     ),
                     Expanded(
                       child: TextField(
+                        controller: messagetextController,
                         onChanged: (value) {
                           messageText = value;
                         },
@@ -99,6 +102,7 @@ class _chatScreenState extends State<chatScreen> {
                         ),
                         child: Icon(Icons.send),
                         onPressed: () async {
+                          messagetextController.clear();
                           await _firestore.collection('messages').add({
                             'text': messageText,
                             'sender': loggedinUser.displayName,
