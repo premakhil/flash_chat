@@ -53,48 +53,46 @@ class _chatScreenState extends State<chatScreen> {
             // Text(widget.userName),
             // Text(widget.userEmail),
             // Text(widget.userID),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
-                child: Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SizedBox(
-                        width: 6,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
+              child: Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                      width: 6,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        onChanged: (value) {
+                          messageText = value;
+                        },
+                        decoration:
+                            kTextFieldDecoration.copyWith(hintText: 'Message'),
                       ),
-                      Expanded(
-                        child: TextField(
-                          onChanged: (value) {
-                            messageText = value;
-                          },
-                          decoration: kTextFieldDecoration.copyWith(
-                              hintText: 'Message'),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    SizedBox(
+                      width: 50.0,
+                      height: 50.0,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: StadiumBorder(),
+                          primary: mainPurple,
                         ),
+                        child: Icon(Icons.send),
+                        onPressed: () {
+                          // _firestore.collection('messages').add({
+                          //   'text': messageText,
+                          //   'sender': loggedinUser.email,
+                          //   'userId': loggedinUser.uid
+                          // });
+                        },
                       ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      SizedBox(
-                        width: 50.0,
-                        height: 50.0,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: StadiumBorder(),
-                            primary: mainPurple,
-                          ),
-                          child: Icon(Icons.send),
-                          onPressed: () {
-                            // _firestore.collection('messages').add({
-                            //   'text': messageText,
-                            //   'sender': loggedinUser.email,
-                            //   'userId': loggedinUser.uid
-                            // });
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             )
