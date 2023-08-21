@@ -47,16 +47,16 @@ class _chatScreenState extends State<chatScreen> {
       ),
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // Text(widget.userName),
-                // Text(widget.userEmail),
-                // Text(widget.userID),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
+            // Text(widget.userName),
+            // Text(widget.userEmail),
+            // Text(widget.userID),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
+                child: Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -95,8 +95,8 @@ class _chatScreenState extends State<chatScreen> {
                       ),
                     ],
                   ),
-                )
-              ],
+                ),
+              ),
             )
           ],
         ),

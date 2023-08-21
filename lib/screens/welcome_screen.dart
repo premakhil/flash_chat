@@ -17,7 +17,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   _navigatetoHome() async {
-    await Future.delayed(Duration(milliseconds: 1500), () {});
+    await Future.delayed(Duration(milliseconds: 1000), () {});
     Navigator.pushReplacementNamed(context, '/login');
   }
 
