@@ -140,84 +140,110 @@ class _chatTilesState extends State<chatTiles> {
         ),
       ),
       body: SafeArea(
-        child: Column(children: [
-          StreamBuilder<QuerySnapshot>(
-            stream: _firestore.collection('users').snapshots(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: mainPurple,
-                  ),
-                );
-              }
+        child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
+                child: Text('People',
+                    style: TextStyle(
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.bold,
+                        color: mainPurple)),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              StreamBuilder<QuerySnapshot>(
+                stream: _firestore.collection('users').snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        backgroundColor: mainPurple,
+                        color: mainPurple,
+                      ),
+                    );
+                  }
 
-              final users = snapshot.data!.docs;
-              List<Text> userWidgets = [];
+                  final users = snapshot.data!.docs;
+                  List<userBubble> userWidgets = [];
 
-              for (var user in users) {
-                // final userEmail = user.data()?['email'];
-                final userData = user.data() as Map<String, dynamic>;
-                if (userData['email'] != loggedinUser.email) {
-                  final userEmail = userData['email'];
-                  final userName = userData['name'];
-                  final userID = userData['userID'];
+                  for (var user in users) {
+                    // final userEmail = user.data()?['email'];
+                    final userData = user.data() as Map<String, dynamic>;
+                    if (userData['userID'] != loggedinUser.uid) {
+                      final userEmail = userData['email'];
+                      final userName = userData['name'];
+                      final userID = userData['userID'];
 
-                  final userWidget = Text('$userName');
-                  userWidgets.add(userWidget);
-                }
-              }
+                      final userWidget = userBubble(
+                        userName: userName,
+                      );
+                      userWidgets.add(userWidget);
+                    }
+                  }
 
-              return Column(children: userWidgets);
-            },
-          ),
-          // ElevatedButton(
-          //     onPressed: () {
-          //       messageStream();
-          //     },
-          //     child: Text('click')),
-          // Padding(
-          //   padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //     children: [
-          //       SizedBox(
-          //         width: 6,
-          //       ),
-          //       Expanded(
-          //         child: TextField(
-          //           onChanged: (value) {
-          //             messageText = value;
-          //           },
-          //           decoration:
-          //               kTextFieldDecoration.copyWith(hintText: 'Message'),
-          //         ),
-          //       ),
-          //       SizedBox(
-          //         width: 5,
-          //       ),
-          //       SizedBox(
-          //         width: 50.0,
-          //         height: 50.0,
-          //         child: ElevatedButton(
-          //           style: ElevatedButton.styleFrom(
-          //             shape: StadiumBorder(),
-          //             primary: mainPurple,
-          //           ),
-          //           child: Icon(Icons.send),
-          //           onPressed: () {
-          //             _firestore.collection('messages').add({
-          //               'text': messageText,
-          //               'sender': loggedinUser.email,
-          //               'userId': loggedinUser.uid
-          //             });
-          //           },
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // )
-        ]),
+                  return Expanded(
+                    child: ListView(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 20.0),
+                      children: userWidgets,
+                    ),
+                  );
+                },
+              ),
+              // ElevatedButton(
+              //     onPressed: () {
+              //       messageStream();
+              //     },
+              //     child: Text('click')),
+              // Padding(
+              //   padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //     children: [
+              //       SizedBox(
+              //         width: 6,
+              //       ),
+              //       Expanded(
+              //         child: TextField(
+              //           onChanged: (value) {
+              //             messageText = value;
+              //           },
+              //           decoration:
+              //               kTextFieldDecoration.copyWith(hintText: 'Message'),
+              //         ),
+              //       ),
+              //       SizedBox(
+              //         width: 5,
+              //       ),
+              //       SizedBox(
+              //         width: 50.0,
+              //         height: 50.0,
+              //         child: ElevatedButton(
+              //           style: ElevatedButton.styleFrom(
+              //             shape: StadiumBorder(),
+              //             primary: mainPurple,
+              //           ),
+              //           child: Icon(Icons.send),
+              //           onPressed: () {
+              //             _firestore.collection('messages').add({
+              //               'text': messageText,
+              //               'sender': loggedinUser.email,
+              //               'userId': loggedinUser.uid
+              //             });
+              //           },
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // )
+            ]),
       ),
     );
   }
