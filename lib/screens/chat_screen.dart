@@ -85,7 +85,7 @@ class _chatScreenState extends State<chatScreen> {
                   );
                 }
 
-                final messages = snapshot.data!.docs;
+                final messages = snapshot.data!.docs.reversed;
                 List<messageBubble> messageWidgets = [];
 
                 for (var message in messages) {
@@ -113,7 +113,7 @@ class _chatScreenState extends State<chatScreen> {
 
                 return Expanded(
                   child: ListView(
-                    // reverse: true,
+                    reverse: true,
                     padding:
                         EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
                     children: messageWidgets,
