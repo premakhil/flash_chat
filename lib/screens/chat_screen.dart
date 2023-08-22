@@ -93,6 +93,7 @@ class _chatScreenState extends State<chatScreen> {
 
                     final messageWidget = messageBubble(
                       messageData: textMessageData,
+                      isMe: true,
                     );
                     messageWidgets.add(messageWidget);
                   } else if (messageData['senderID'] == widget.userID &&
@@ -101,6 +102,7 @@ class _chatScreenState extends State<chatScreen> {
 
                     final messageWidget = messageBubble(
                       messageData: textMessageData,
+                      isMe: false,
                     );
                     messageWidgets.add(messageWidget);
                   }
