@@ -70,6 +70,43 @@ class _chatScreenState extends State<chatScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            StreamBuilder<QuerySnapshot>(
+              stream: _firestore.collection('messages').snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: mainPurple,
+                      color: mainPurple,
+                    ),
+                  );
+                }
+
+                final messages = snapshot.data!.docs;
+                List<messageBubble> messageWidgets = [];
+
+                for (var message in messages) {
+                  final messageData = message.data() as Map<String, dynamic>;
+                  if (messageData['senderID'] == loggedinUser.uid &&
+                      messageData['receiverID'] == widget.userID) {
+                    final textMessageData = messageData['text'];
+
+                    final messageWidget = messageBubble(
+                      messageData: textMessageData,
+                    );
+                    messageWidgets.add(messageWidget);
+                  }
+                }
+
+                return Expanded(
+                  child: ListView(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                    children: messageWidgets,
+                  ),
+                );
+              },
+            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(3, 0, 0, 6),
               child: Expanded(
@@ -102,16 +139,20 @@ class _chatScreenState extends State<chatScreen> {
                         ),
                         child: Icon(Icons.send),
                         onPressed: () async {
-                          messagetextController.clear();
-                          await _firestore.collection('messages').add({
-                            'text': messageText,
-                            'sender': loggedinUser.displayName,
-                            'senderMail': loggedinUser.email,
-                            'senderID': loggedinUser.uid,
-                            'receiver': widget.userName,
-                            'receiverMail': widget.userEmail,
-                            'receiverID': widget.userID
-                          });
+                          try {
+                            messagetextController.clear();
+                            await _firestore.collection('messages').add({
+                              'text': messageText,
+                              'sender': loggedinUser.displayName,
+                              'senderMail': loggedinUser.email,
+                              'senderID': loggedinUser.uid,
+                              'receiver': widget.userName,
+                              'receiverMail': widget.userEmail,
+                              'receiverID': widget.userID
+                            });
+                          } catch (e) {
+                            print(e);
+                          }
                         },
                       ),
                     ),

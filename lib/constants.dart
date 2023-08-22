@@ -77,3 +77,36 @@ class userBubble extends StatelessWidget {
     );
   }
 }
+
+class messageBubble extends StatelessWidget {
+  messageBubble({required this.messageData});
+
+  final String messageData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(1.0),
+      child: Material(
+        // elevation: 1.0,
+        color: Color(0xffe8ddff).withOpacity(0.15),
+        borderRadius: BorderRadius.circular(15),
+        child: Row(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Text(
+                '$messageData',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xff88758c),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
