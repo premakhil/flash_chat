@@ -95,6 +95,14 @@ class _chatScreenState extends State<chatScreen> {
                       messageData: textMessageData,
                     );
                     messageWidgets.add(messageWidget);
+                  } else if (messageData['senderID'] == widget.userID &&
+                      messageData['receiverID'] == loggedinUser.uid) {
+                    final textMessageData = messageData['text'];
+
+                    final messageWidget = messageBubble(
+                      messageData: textMessageData,
+                    );
+                    messageWidgets.add(messageWidget);
                   }
                 }
 
