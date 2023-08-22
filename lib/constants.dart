@@ -33,23 +33,25 @@ class userBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
+    return Padding(
+      padding: EdgeInsets.all(1.0),
+      child: Material(
+        // elevation: 1.0,
+        color: Color(0xffe8ddff).withOpacity(0.15),
+        borderRadius: BorderRadius.circular(15),
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
                 builder: (context) => chatScreen(
-                      userName: userName,
-                      userEmail: userEmail,
-                      userID: userID,
-                    )));
-      },
-      child: Padding(
-        padding: EdgeInsets.all(1.0),
-        child: Material(
-          // elevation: 1.0,
-          color: Color(0xffe8ddff).withOpacity(0.15),
-          borderRadius: BorderRadius.circular(15),
+                  userName: userName,
+                  userEmail: userEmail,
+                  userID: userID,
+                ),
+              ),
+            );
+          },
           child: Row(
             children: [
               Image.asset(
