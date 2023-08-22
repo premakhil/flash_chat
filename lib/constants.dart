@@ -93,7 +93,7 @@ class messageBubble extends StatelessWidget {
             isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
           Material(
-            elevation: 3.0,
+            elevation: 1.0,
             color: isMe ? mainPurple : Color.fromARGB(255, 248, 245, 255),
             borderRadius: isMe
                 ? BorderRadius.only(
