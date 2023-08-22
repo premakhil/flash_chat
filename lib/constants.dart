@@ -86,26 +86,30 @@ class messageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(1.0),
-      child: Material(
-        // elevation: 1.0,
-        color: Color(0xffe8ddff).withOpacity(0.15),
-        borderRadius: BorderRadius.circular(15),
-        child: Row(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: EdgeInsets.all(10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Material(
+            elevation: 5.0,
+            color: mainPurple,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30.0),
+                bottomLeft: Radius.circular(30.0),
+                bottomRight: Radius.circular(30.0)),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Text(
-                '$messageData',
+                messageData,
                 style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xff88758c),
+                  fontSize: 15,
+                  // fontWeight: FontWeight.w400,
+                  color: Colors.white,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
